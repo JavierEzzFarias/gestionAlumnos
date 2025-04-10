@@ -1,0 +1,103 @@
+body {
+    overflow-x: hidden;
+}
+body.sidebar-open {
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    overflow-y: auto;
+    background-color: #212529;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    flex-shrink: 0;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.main-content {
+    margin-left: 280px;
+    padding: 1.5rem;
+    width: calc(100% - 280px);
+    flex-grow: 1;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar .btn-close {
+    font-size: 0.8rem;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #495057;
+}
+.nav-link:hover {
+    background-color: #343a40;
+}
+.table-responsive { overflow-x: auto; width: 100%; margin-bottom: 1rem; -webkit-overflow-scrolling: touch; }
+canvas { max-width: 100%; height: auto !important; }
+.btn .bi { vertical-align: middle; margin-top: -2px; }
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1045;
+        padding: 0.75rem;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+     .sidebar .btn-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        z-index: 10;
+     }
+
+     .sidebar .logo-link {
+        padding-top: 1.5rem;
+     }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 60px 1rem 1rem 1rem;
+    }
+
+    .btn-toggler {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1050;
+    }
+
+    .sidebar-backdrop {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1040;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        display: none;
+    }
+    .sidebar-backdrop.active {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@media (min-width: 992px) {
+    .btn-toggler.d-lg-none {
+        display: none !important;
+    }
+}
